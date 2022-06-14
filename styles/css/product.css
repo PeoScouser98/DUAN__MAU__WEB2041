@@ -1,0 +1,180 @@
+/* 
+---------------------------------------------------------------------
+						FIXED ASDIE MENU
+---------------------------------------------------------------------
+*/
+@import "main.css";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	list-style: none;
+	text-decoration: none;
+}
+body {
+	background: #f3f5f9;
+}
+.wrapper {
+	position: relative;
+}
+.sidebar {
+	position: sticky;
+	position: -webkit-sticky;
+	top: 0;
+	left: 0;
+	width: 300px;
+	height: 100vh;
+	padding: 50px 20px;
+	border-right: 1px solid lightgray;
+	overflow-y: hidden;
+}
+.text-muted {
+	color: #adb5bd !important;
+}
+ul {
+	padding: 0;
+}
+ul li a img {
+	background: #66bb6a;
+	top: 0;
+	border: none;
+	width: 20px;
+}
+.sidebar ul li {
+	padding: 15px;
+}
+.sidebar ul li a {
+	color: var(--primary);
+	display: block;
+	text-decoration: none;
+	font-weight: 500;
+	font-size: 20px;
+}
+.sidebar ul li a .fas {
+	width: 30px;
+	color: #bdb8d7 !important;
+}
+
+.sidebar ul li a .far {
+	width: 30px;
+	color: #bdb8d7 !important;
+}
+.sidebar ul li a:hover {
+	color: var(--secondary);
+}
+#search-input:focus {
+	background: none;
+}
+.product-img {
+	border-radius: 1em 1em 0 0;
+	height: 18rem;
+	object-fit: contain;
+}
+input[type="number"] {
+	-webkit-appearance: none;
+	appearance: none;
+}
+.form-control:focus {
+	box-shadow: none;
+}
+#show-desc--btn:hover {
+	text-decoration: underline;
+}
+#comment-box::-webkit-scrollbar {
+	background: transparent;
+	box-shadow: inset 0 0 2px lightgray;
+	max-width: 10px;
+}
+#comment-box::-webkit-scrollbar-track {
+	border-radius: 5px;
+}
+
+/* product card */
+.card {
+	box-shadow: 0 0 5px lightgray;
+	max-width: fit-content;
+}
+.product-name::-webkit-scrollbar {
+	display: none;
+}
+.add-cart-btn:hover {
+	background: var(--secondary);
+	color: var(--primary);
+	transition: ease-in-out 0.3s;
+}
+.card:hover {
+	transform: translateY(-10px);
+	box-shadow: 0 15px 20px var(--bg-primary);
+	transition: ease-in-out 0.3s;
+}
+
+/* product detail */
+.add-cart-btn,
+.check-out-btn {
+	background: var(--primary);
+	padding: 10px 20px;
+	color: #fff;
+	font-weight: 500;
+}
+
+.add-cart-btn:hover,
+.check-out-btn:hover {
+	background: var(--secondary);
+	color: var(--primary);
+}
+
+#comment-list {
+	overflow: auto;
+}
+
+#comment-list::-webkit-scrollbar {
+	box-shadow: inset 0 0 2px lightgray;
+	max-width: 10px;
+	border-radius: 5px;
+}
+
+#comment-list::-webkit-scrollbar-track {
+	background: transparent;
+	border-radius: 5px;
+}
+
+#comment-list::-webkit-scrollbar-thumb {
+	background: lightgray;
+	border-radius: 5px;
+}
+/* cart list */
+@media (min-width: 1025px) {
+	.h-custom {
+		height: 100vh !important;
+	}
+}
+
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+	font-size: 1rem;
+	line-height: 2.15;
+	padding-left: 0.75em;
+	padding-right: 0.75em;
+}
+
+.card-registration .select-arrow {
+	top: 13px;
+}
+
+.bg-grey {
+	background-color: #eae8e8;
+}
+
+@media (min-width: 992px) {
+	.card-registration-2 .bg-grey {
+		border-top-right-radius: 16px;
+		border-bottom-right-radius: 16px;
+	}
+}
+
+@media (max-width: 991px) {
+	.card-registration-2 .bg-grey {
+		border-bottom-left-radius: 16px;
+		border-bottom-right-radius: 16px;
+	}
+}

@@ -1,0 +1,6 @@
+{
+	"name": "quang/ecommerce",
+	"require": {
+		"phpmailer/phpmaile": "dev-master"
+	}
+}
