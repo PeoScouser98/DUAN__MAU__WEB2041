@@ -1,7 +1,4 @@
 <?php
-
-include '../lib/validate.php';
-include '../lib/upload-image.php';
 $sql = "SELECT * FROM `user_role`";
 $roles = select_all_records($sql);
 if (isset($_GET['id'])) {
