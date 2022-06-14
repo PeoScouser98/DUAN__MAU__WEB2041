@@ -18,7 +18,7 @@ $error = [];
         <!-- cate name -->
         <div class="mb-3">
             <label for="cate-name" class="form-label">Category's name</label>
-            <input type="text" class="form-control" name="cate_name" id="cate-name" aria-describedby="helpId" value=<?php echo $category['cate_name'] ?>>
+            <input type="text" class="form-control" name="cate_name" id="cate-name" aria-describedby="helpId" value="<?php echo $category['cate_name'] ?>">
             <small id="helpId" class="form-text text-danger fw-bold">
                 <?php
                 check_empty("cate_name", "category's name");

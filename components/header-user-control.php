@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-end  gap-3">
-    <img src=<?= $ROOT_AVATAR . $userData['avatar'] ?> alt="" id="header-avatar" class="rounded-circle" style="max-width:3rem">
+    <img src=<?= $ROOT_AVATAR . $userData['avatar'] ?> alt="" id="header-avatar" class="rounded-circle" style="width:3rem;height:3rem;object-fit:cover">
     <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-end align-items-center gap-3">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle align-middle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

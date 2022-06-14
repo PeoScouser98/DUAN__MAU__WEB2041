@@ -39,8 +39,8 @@
             <!-- avatar -->
             <div>
                 <form action="" method="POST" enctype="multipart/form-data" class="mb-5" onsubmit="loadImage(this)">
-                    <div class="position-relative w-100 mx-auto" style="">
-                        <img src=<?= $ROOT_AVATAR . $userData['avatar'] ?> id="user-image" class="rounded-circle img-fluid d-block mx-auto" style="max-width:200px">
+                    <div class="position-relative w-100 mx-auto">
+                        <img src=<?= $ROOT_AVATAR . $userData['avatar'] ?> id="user-image" class="rounded-circle img-fluid d-block mx-auto" style="width:200px; height:200px;object-fit:cover">
                         <label for="avatar" id="upload-label" class="position-absolute top-50 start-50 translate-middle h-100 rounded-circle" style="width:200px">Upload</label>
                         <input type="file" class="form-control d-none" name="avatar" id="avatar" placeholder="" aria-describedby="fileHelpId" onchange="loadFile(event)">
                         <button type="submit" name="change-avatar" class="position-absolute top-100 start-50 translate-middle text-white fs-3 bg-transparent border-0 "><i class="bi bi-camera"></i></button>

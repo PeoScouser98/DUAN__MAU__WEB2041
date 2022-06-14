@@ -5,7 +5,6 @@ $categories = select_all_records($sql);
 if (isset($_GET['id'])) {
     $product = select_single_record("SELECT * FROM product INNER JOIN category ON product.cate_id= category.cate_id WHERE product_id = '{$_GET['id']}'");
     extract($product);
-    echo $product_id;
 }
 
 
@@ -72,6 +71,11 @@ if (isset($_GET['id'])) {
         <div class="mb-3 ">
             <label for="description" class="form-label">Description</label>
             <textarea name="description" id="description" class="form-control d-block w-100" value="<?php echo $product_description ?>"></textarea>
+            <small id="helpId" class="form-text text-danger fw-bold">
+                <?php
+                check_empty("description", "description");
+                ?>
+            </small>
         </div>
         <!-- submit -->
         <div class="mb-3">
