@@ -1,8 +1,6 @@
-// const { Button } = require("bootstrap");
-
 const tempAmount = document.querySelector("#temp-amount");
 const totalAmount = document.querySelector("#total-amount");
-const totalAmountLabel = totalAmount.parentElement.querySelector("h4");
+const totalAmountLabel = totalAmount.parentElement.querySelector("#total-amount-label");
 const deliveryOption = document.querySelector("#delivery");
 const giftCode = document.querySelector("#gift-code");
 const giftCodeMessage = document.querySelector("#gift-code-message");
@@ -40,7 +38,6 @@ function getTotalPrice(input) {
 // tính tổng tiền phải thanh toán
 function calcTotalAmount() {
 	totalAmount.value = +tempAmount.innerText.slice(1, tempAmount.innerText.length) + +deliveryOption.value - discount;
-	console.log(totalAmount.value);
 	totalAmountLabel.innerText = `$${totalAmount.value}`;
 	return totalAmount.value;
 }

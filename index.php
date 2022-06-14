@@ -72,8 +72,6 @@ session_start();
             autoHeight: false,
         });
     </script>
-    <script src="./js/cart-list.js"></script>
-    <script src="./js/validate.js"></script>
 </body>
 
 </html>

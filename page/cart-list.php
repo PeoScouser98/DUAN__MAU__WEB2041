@@ -150,7 +150,7 @@ place_order();
                                     <form action="?page=cart-list" method="POST">
                                         <div class="d-flex justify-content-between align-items-center mb-5">
                                             <h5 class="text-uppercase">Total price:</h5>
-                                            <h4 class="text-uppercase"><?= $tempAmount ?></h4>
+                                            <h4 class="text-uppercase" id="total-amount-label"><?= $tempAmount ?></h4>
                                             <input type="hidden" id="total-amount" name="total">
                                         </div>
                                         <button type="submit" class="btn btn-dark btn-block btn-lg" name="place-order" data-mdb-ripple-color="dark">Place Order</button>
@@ -164,7 +164,4 @@ place_order();
         </div>
     </div>
 </section>
-<!-- <script src="./js/cart-list.js"></script> -->
-<script type="text/javascript">
-
-</script>
+<script src="./js/cart-list.js"></script>
