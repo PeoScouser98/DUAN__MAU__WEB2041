@@ -1,5 +1,7 @@
 <?php
-$sql = "SELECT * FROM comments INNER JOIN users ON comments.user_id = users.user_id";
+$sql = "SELECT * FROM comments 
+        INNER JOIN users ON comments.user_id = users.user_id
+        INNER JOIN product ON comments.product_id = product.product_id";
 $comments = select_all_records($sql);
 ?>
 <div class="container bg-white py-5">
@@ -11,6 +13,7 @@ $comments = select_all_records($sql);
                     <th>-</th>
                     <th>User's name</th>
                     <th>Content</th>
+                    <th>Belong to</th>
                     <th>Comment Date</th>
                     <th>Action</th>
                 </tr>
@@ -24,6 +27,7 @@ $comments = select_all_records($sql);
                             <td><input type="checkbox" class="check-box" name="delId[]" value=<?= $comment_id ?>></td>
                             <td><?= $user_name ?></td>
                             <td><?= $content ?></td>
+                            <td><?= $product_name ?></td>
                             <td><?= $comment_date ?></td>
                             <td>
                                 <a href=<?= "?page=comment-del&delId={$comment_id}" ?> class="btn btn-danger" onclick="return confirm('Delete this comment ?')">Delete</a>

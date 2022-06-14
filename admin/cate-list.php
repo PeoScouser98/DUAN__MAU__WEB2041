@@ -1,7 +1,7 @@
 <?php
 $cateList = select_all_records("SELECT * FROM category");
 ?>
-<div class="container bg-white py-5" style="">
+<div class="container bg-white py-5">
     <h1 class="mb-5 text-center">Category List</h1>
     <table class="table my-0">
         <thead>

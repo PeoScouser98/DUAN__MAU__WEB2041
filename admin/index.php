@@ -47,7 +47,7 @@ $ROOT_PRODUCT_IMG = "/ecommerce/assets/img/products/";
     <main>
         <div class="container bg-white">
             <?php
-            $page = isset($_GET['page']) ? $_GET['page'] : 'home';
+            $page = isset($_GET['page']) ? $_GET['page'] : 'cate-list';
             $path = "./{$page}.php";
             if (file_exists($path)) {
                 require $path;
