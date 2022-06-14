@@ -84,7 +84,6 @@ if (isset($_GET['groupby'])) {
                         <td>
                             <div class="scroll" style="height: 100px;"><?= $product['product_description'] ?></div>
                         </td>
-
                         <td>
                             <a href=<?php echo "?page=product-edit&id={$product['product_id']}" ?> class="btn border-2 border-dark">Edit</a>
                             <a href=<?php echo "./product-del.php?id={$product['product_id']}" ?> class="btn btn-danger" onclick="return confirm(`Are you sure ?`) ">Delete</a>

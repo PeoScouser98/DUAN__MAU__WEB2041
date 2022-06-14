@@ -1,5 +1,4 @@
 <?php
-include '../lib/validate.php';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $sql = "SELECT * FROM category WHERE cate_id = {$id}";
