@@ -4,14 +4,13 @@ include './lib/validate.php';
 session_start();
 if (isset($_POST['login-submit'])) {
     $account = $_POST['account'];
-    $password = $_POST['password'];
-    md5($password);
-    if (empty($account) || empty($password)) {
+    $password = substr(md5($_POST['password'], false), 0, 20);
+    if (empty($account) || empty($password)) :
         echo "<script>alert(`Please enter your account and password!`);</script>";
-    }
-    if (!empty($account) && !empty($password)) {
+    endif;
+    if (!empty($account) && !empty($password)) :
         $userData = select_single_record("SELECT * FROM users WHERE user_id = '{$account}'");
-        if (!empty($userData)) {
+        if (!is_null($userData)) {
             if ($password == $userData['user_password']) {
                 setcookie("id", $userData['user_id']);
                 $_SESSION['user_name'] = $userData['user_name'];
@@ -22,7 +21,7 @@ if (isset($_POST['login-submit'])) {
         // nếu kết quả trả về từ câu truy vẫn = null -> tài khoản không tồn tại
         else
             echo "<script>alert(`Account doesn't exist!`)</script>";
-    }
+    endif;
 }
 ?>
 <!DOCTYPE html>
