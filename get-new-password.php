@@ -1,9 +1,10 @@
 <?php
 require './lib/validate.php';
 require './lib/execute_query.php';
+if (!isset($_COOKIE['user_id']))
+    header("location:./");
 $error = [];
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +29,7 @@ $error = [];
             <h1 class="fw-light text-white text-center mb-5" style="font-size: 2.5em">Get New Password</h1>
             <div class="d-flex justify-content-center flex-column align-items-center gap-2 w-100">
                 <!-- Verification code -->
-                <div class="mb-3 w-100 w-100 h-auto">
+                <div class="mb-3 w-100 h-auto">
                     <input type="text" class="form-control rounded-pill" name="code" id="" aria-describedby="helpId" placeholder="Verification Code" />
                     <small class="text-danger fw-bold">
                         <?php
@@ -36,7 +37,7 @@ $error = [];
                         ?>
                     </small>
                 </div>
-                <div class="mb-3 w-100 w-100 h-auto">
+                <div class="mb-3 w-100 h-auto">
                     <input type="password" class="form-control rounded-pill" name="new_password" id="" aria-describedby="helpId" placeholder="New Password" />
                     <small class="text-danger fw-bold">
                         <?php
@@ -45,7 +46,7 @@ $error = [];
                         ?>
                     </small>
                 </div>
-                <div class="mb-3 w-100 w-100 h-auto">
+                <div class="mb-3 w-100 h-auto">
                     <input type="password" class="form-control rounded-pill" name="cfm_password" id="" aria-describedby="helpId" placeholder="Confirm Password" />
                     <small class="text-danger fw-bold">
                         <?php
@@ -55,14 +56,12 @@ $error = [];
                         ?>
                     </small>
                 </div>
-                <div class="mb-3 w-100 w-100 h-auto d-flex justify-content-center">
+                <div class="mb-5 w-100 h-auto d-flex justify-content-center">
                     <input type="submit" class="form-control btn rounded" name="change-password" id="submit-btn" value="Change Password" />
                 </div>
+                <p class="text-secondary text-center">Still haven't received code? <a href="./password-recover.php" class="ps-2 text-center text-white">Try again</a></p>
             </div>
-            <div class="d-flex flex-column gap-3">
-                <a href="./login.php" class="text-center text-white text-decoration-none">Login</a>
-                <a href="./password-recover.php" class="text-center text-white text-decoration-none">Get verification code again</a>
-            </div>
+
         </form>
     </div>
 </body>
@@ -77,7 +76,8 @@ if (isset($_POST['change-password']) && isset($_COOKIE['user_id'])) :
             $newPassword = md5($_POST['new_password']);
             execute_query("UPDATE users SET user_password = '{$newPassword}' WHERE user_id = '{$_COOKIE['user_id']}'");
             echo "<script>alert(`Change password successfully!`);</script>";
-            setcookie("user_id", "", -1);
+            setcookie("user_id", "", time() - 300);
+            echo "<script>window.location = window.location.href</script>";
         } else
             echo "<script>alert(`Verification code is incorrect!`);</script>";
     } else
