@@ -1,3 +1,9 @@
+form {
+	transform: translateY(-10%);
+}
+form .login-link:hover {
+	text-decoration: underline;
+}
 .login-form-container {
 	height: 100vh;
 }

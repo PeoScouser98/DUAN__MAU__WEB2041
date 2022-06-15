@@ -96,9 +96,9 @@ if (isset($_POST['submit'])) {
         $description = $_POST['description'];
         $sql = "UPDATE product SET cate_id='{$cateID}',
                                     product_name='{$productName}',
-                                    price=  '{$price}',
+                                    price='{$price}',
                                     product_img='{$path}',
-                                    discount=  '{$discount}',
+                                    discount='{$discount}',
                                     product_description='{$description}'
                 WHERE product_id = '{$_GET['id']}'";
         execute_query($sql);

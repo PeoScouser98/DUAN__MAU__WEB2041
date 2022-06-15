@@ -11,6 +11,7 @@ const showError = (input, message) => {
 	errorMessage.innerHTML = errorIcon + message;
 	errorMessage.style.color = "var(--error)";
 	input.style.border = "3px solid var(--error)";
+	return false;
 };
 // show success if value of the field is valid
 const showSuccess = (input, message) => {

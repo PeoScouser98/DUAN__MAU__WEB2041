@@ -8,12 +8,12 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 //Load Composer's autoloader
 // require 'vendor/autoload.php';
-function send_password_mail($userEmail, $newPassword)
+function send_password_mail($userEmail, $code)
 {
     $mail = new PHPMailer(true);
     try {
         //Server settings
-        $mail->SMTPDebug = SMTP::DEBUG_SERVER;                     //Enable verbose debug output
+        $mail->SMTPDebug = 0;                     //Enable verbose debug output
         $mail->isSMTP();
         $mail->CharSet  = "utf-8";                                    //Send using SMTP
         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
@@ -32,16 +32,14 @@ function send_password_mail($userEmail, $newPassword)
         // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
-        $mail->Subject = 'WE SEND YOU NEW PASSWORD!';
-        $mail->Body    = "Use this password to login your account: <b>{$newPassword}</b>";
+        $mail->Subject = 'WE SEND YOU VERIFICATION CODE!';
+        $mail->Body    = "Use this code to to change new password: <b>{$code}</b>";
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
         $mail->send();
-        echo 'Message has been sent';
+        echo "<script>alert(`Check your email to get new password!`)</script>";
     } catch (Exception $e) {
-        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        echo "<script>alert(`Message could not be sent. Mailer Error: {$mail->ErrorInfo}`)</script>";
     }
-    echo "<script>alert(`Check your email to get new password!`)</script>";
 }
 function drop_message($userEmail, $password, $userName, $content)
 {

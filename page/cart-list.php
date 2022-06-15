@@ -29,7 +29,7 @@ if (isset($_POST['place-order'])) :
         }
         unset($_SESSION['cart']);
         echo "<script>alert(`Thank for buying our products!`);</script>";
-        echo "<script>history.go(-1)</script>";
+        echo "<script>window.location = window.location.href</script>";
     } else echo "<script>alert(`Failed to place order!`)</script>";
 endif;
 ?>

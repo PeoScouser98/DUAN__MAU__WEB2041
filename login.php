@@ -1,13 +1,13 @@
 <?php
 include './lib/execute_query.php';
-include './lib/validate.php';
+// include './lib/validate.php';
 session_start();
 if (isset($_POST['login-submit'])) {
     $account = $_POST['account'];
     $password = substr(md5($_POST['password'], false), 0, 20);
-    if (empty($account) || empty($password)) :
+    if (empty($account) || empty($password))
         echo "<script>alert(`Please enter your account and password!`);</script>";
-    endif;
+
     if (!empty($account) && !empty($password)) :
         $userData = select_single_record("SELECT * FROM users WHERE user_id = '{$account}'");
         if (!is_null($userData)) {
@@ -39,11 +39,6 @@ if (isset($_POST['login-submit'])) {
     <script src="https://kit.fontawesome.com/d2bf59f6fb.js" crossorigin="anonymous"></script>
     <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
 </head>
-<style>
-    form {
-        transform: translateY(-10%);
-    }
-</style>
 
 <body>
     <div class="login-form-container d-flex justify-content-center align-items-center position-fixed top-0 w-100 h-100" style="background-image:linear-gradient(black, white)">
@@ -52,32 +47,26 @@ if (isset($_POST['login-submit'])) {
             <h1 class="fw-light text-white mb-5" style="font-size: 4em;">Login</h1>
             <p class="text-white">Please enter your account and password</p>
             <div class="d-flex justify-content-center flex-column align-items-center gap-2 w-100">
-                <div class="mb-3 w-100 w-100 h-auto">
+                <div class="mb-3 w-100 h-auto">
                     <input type="text" class="form-control rounded-pill" name="account" id="" aria-describedby="helpId" placeholder="Account" />
                 </div>
-                <div class="mb-3 w-100 w-100 h-auto">
+                <div class="mb-3 w-100 h-auto">
                     <input type="password" class="form-control rounded-pill" name="password" id="" aria-describedby="helpId" placeholder="Password" />
                 </div>
-                <div class="mb-3 w-100 w-100 h-auto text-center">
+                <div class="mb-3 w-100 h-auto text-center">
                     <span class=" text-secondary">Do not have an account ?</span>
-                    <a href="./register.php" class="text-white text-decoration-none">Register</a>
+                    <a href="./register.php" class="login-link text-white text-decoration-none">Register</a>
                 </div>
-                <div class="mb-3 w-100 w-100 h-auto d-flex justify-content-center">
+                <div class="mb-5 w-100 h-auto d-flex justify-content-center">
                     <input type="submit" class="form-control btn rounded" name="login-submit" id="submit-btn" value="Login" />
                 </div>
-                <div class="mb-3 w-100 w-100 h-auto text-center">
-                    <a href="./password-recover.php" class="text-white">Forgot password ?</a>
+                <div class="w-100 h-auto text-center d-flex flex-column gap-3">
+                    <a href="./password-recover.php" class="login-link text-white text-decoration-none">Forgot password ?</a>
+                    <a href="./" class="login-link text-white text-decoration-none">Continue without login !</a>
                 </div>
             </div>
         </form>
     </div>
-    <script>
-        window.onload = function() {
-            const form = document.querySelector('form');
-            form.style.transitionDuration = "1s";
-            form.style.transform = "translateY(0%)";
-        }
-    </script>
 </body>
 
 </html>
