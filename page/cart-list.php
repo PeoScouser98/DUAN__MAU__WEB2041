@@ -5,8 +5,33 @@ if (isset($_SESSION['cart']) && isset($_GET['del_id'])) {
     array_splice($_SESSION['cart'], $_GET['del_id'], 1);
     echo "<script>history.go(-1)</script>";
 }
-// update cart
-place_order();
+// updata cart
+if (isset($_POST['update-cart'])) :
+    $update_item = array(
+        "id" => $_POST['product_id'],
+        "image" => $_POST['product_img'],
+        "name" => $_POST['product_name'],
+        "price" => $_POST['price'],
+        "qty" => $_POST['quantity'],
+        "total" => $_POST['price'] * $_POST['quantity'],
+    );
+    array_splice($_SESSION['cart'], $_POST['index'], 1, [$update_item]);
+endif;
+// place order
+if (isset($_POST['place-order'])) :
+    if (!empty($_SESSION['cart'])) {
+        $insertOrder_SQL = "INSERT INTO orders (`user_id`,`total_amount`,`placed_on`) VALUES ('{$_COOKIE['id']}', '{$_POST['total']}',CURRENT_TIMESTAMP())";
+        $lastID = execute_query($insertOrder_SQL);
+        foreach ($_SESSION['cart'] as $item) {
+            execute_query("INSERT INTO order_detail (`order_id`,product_id,quantity,amount)
+                            VALUES ('{$lastID}', '{$item['id']}', '{$item['qty']}', '{$item['total']}')");
+            execute_query("UPDATE product SET stock = (stock - {$item['qty']}) WHERE product_id = {$item['id']}");
+        }
+        unset($_SESSION['cart']);
+        echo "<script>alert(`Thank for buying our products!`);</script>";
+        echo "<script>history.go(-1)</script>";
+    } else echo "<script>alert(`Failed to place order!`)</script>";
+endif;
 ?>
 <style>
     #cart-list {
@@ -57,17 +82,6 @@ place_order();
                                     <div id="cart-list">
                                         <?php
                                         if (isset($_SESSION['cart'])) :
-                                            if (isset($_POST['update-cart'])) :
-                                                $update_item = array(
-                                                    "id" => $_POST['product_id'],
-                                                    "image" => $_POST['product_img'],
-                                                    "name" => $_POST['product_name'],
-                                                    "price" => $_POST['price'],
-                                                    "qty" => $_POST['quantity'],
-                                                    "total" => $_POST['price'] * $_POST['quantity'],
-                                                );
-                                                array_splice($_SESSION['cart'], $_POST['index'], 1, [$update_item]);
-                                            endif;
                                             $tempAmount = 0;
                                             $index = 0;
                                             if (isset($_SESSION['cart']) && is_array($_SESSION['cart']) && !empty($_SESSION['cart'])) {
