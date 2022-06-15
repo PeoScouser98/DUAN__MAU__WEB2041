@@ -5,7 +5,6 @@ include './lib/validate.php';
 include './lib/add-wish-list.php';
 include './lib/add-cart-list.php';
 include './lib/render.php';
-include './lib/place-order.php';
 include './lib/send-mail.php';
 
 if (isset($_COOKIE['id'])) {
