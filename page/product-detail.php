@@ -14,7 +14,7 @@ add_to_wishlist();
 add_cart();
 ?>
 <script type="text/javascript">
-    function is_null() {
+    function post_comment() {
         const commentBox = document.querySelector('#comment-box');
         if (commentBox.value === '')
             return false;
@@ -116,7 +116,7 @@ add_cart();
                 </div>
                 <!-- comment input -->
                 <div class="w-100">
-                    <form action="" method="POST" onsubmit="return is_null()">
+                    <form action="" method="POST" onsubmit="return post_comment()">
                         <div class="d-flex justify-content-start align-items-center gap-2 p-2 w-100">
                             <label>
                                 <img src=<?= !isset($_COOKIE['id']) ? $ROOT_AVATAR . 'default.jpg' : $ROOT_AVATAR . $userData['avatar'] ?> class="rounded-circle" style="max-width:50px">
@@ -150,7 +150,7 @@ if (isset($_POST['post-comment'])) {
         $sql = "INSERT INTO `comments`(`content`, `user_id`, `product_id`,`comment_date`) 
                 VALUES ('{$content}','{$user_id}','{$product_id}',CURRENT_TIME())";
         execute_query($sql);
-        echo "<script>history.go(-1)</script>";
+        echo "<script>window.location = window.location.href</script>";
     } else "<script>
                 swal({
                     title: 'Failed!',
