@@ -1,7 +1,8 @@
 <?php
 $sql = "SELECT * FROM `orders` 
         INNER JOIN `order_status` ON `orders`.`status_id` = `order_status`.`status_id` 
-        WHERE user_id =  '{$userData['user_id']}'";
+        WHERE user_id =  '{$userData['user_id']}'
+        ORDER BY orders.order_id DESC";
 $orderList = select_all_records($sql);
 
 ?>
