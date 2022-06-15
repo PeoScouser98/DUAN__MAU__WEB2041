@@ -31,7 +31,7 @@ $error = [];
             <input type="text" min=0 class="form-control" name="phone" id="phone" aria-describedby="helpId" value=<?php echo $userData['phone'] ?>>
             <small class="form-text fw-bold text-danger">
                 <?php
-                check_empty('phone', "phone numberr");
+                check_empty('phone', "phone number");
                 check_phoneNumber('phone')
                 ?>
             </small>
