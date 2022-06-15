@@ -1,23 +1,5 @@
 <?php
-if (isset($_POST['submit']) && isset($_COOKIE['id'])) {
-    if (empty($error)) {
-        $id = $_COOKIE['id'];
-        $username = $_POST['username'];
-        $email = $_POST['email'];
-        $address = $_POST['address'];
-        $phone = $_POST['phone'];
-        $sql = "UPDATE users SET `user_name`= '{$username}',
-                                 `email`= '{$email}',
-                                 `address`=  '{$address}',
-                                 `phone`= '{$phone}'
-                             WHERE user_id = '{$id}'";
-        execute_query($sql);
-        echo "<script>alert(`Edit your profile successfully!`)</script>";
-        echo "<script>history.go(-1)</script>";
-    } else {
-        echo "<script>alert(`Check your information again!`)</script>";
-    }
-}
+$error = [];
 ?>
 <div class="container">
     <h1 class="mb-5">Edit Account</h1>
@@ -71,3 +53,23 @@ if (isset($_POST['submit']) && isset($_COOKIE['id'])) {
         </div>
     </form>
 </div>
+<?php
+if (isset($_POST['submit']) && isset($_COOKIE['id'])) {
+    if (empty($error)) {
+        $id = $_COOKIE['id'];
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $address = $_POST['address'];
+        $phone = $_POST['phone'];
+        $sql = "UPDATE users SET `user_name`= '{$username}',
+                                 `email`= '{$email}',
+                                 `address`=  '{$address}',
+                                 `phone`= '{$phone}'
+                WHERE user_id = '{$id}'";
+        execute_query($sql);
+        echo "<script>alert(`Edit your profile successfully!`)</script>";
+        echo "<script>window.location = window.location.href</script>";
+    } else {
+        echo "<script>alert(`Check your information again!`)</script>";
+    }
+}
