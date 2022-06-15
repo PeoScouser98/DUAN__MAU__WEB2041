@@ -10,11 +10,11 @@ if (isset($_POST['get-recovery-password'])) :
         $user = select_single_record("SELECT * FROM `users` WHERE `user_id` = '{$account}'");
         if (!is_null($user)) {
             if ($user['email'] == $email) {
-                setcookie("user_id", $account);
+                setcookie("user_id", $account, time() + 300);
                 $verifyCode = substr(md5(rand(0, 999999)), 0, 8);
                 execute_query("UPDATE users SET user_password = '{$verifyCode}' WHERE user_id = '{$account}'");
-                send_password_mail($email, $verifyCode);
-                header("Location: ./get-new-password.php");
+                send_verify_code($email, $verifyCode);
+                echo "<script>window.location = './get-new-password.php'</script>";
             } else  echo "<script>alert(`Email is incorrect!`)</script>";
         }
         // tài khoản phải tồn tại trên hệ thống
