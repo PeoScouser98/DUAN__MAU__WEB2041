@@ -46,7 +46,7 @@ if (isset($_POST['submit'])) {
     if (empty($error)) {
         $cate_name = $_POST["cate_name"];
         $cate_icon = $_POST["cate_icon"];
-        $sql = "UPDATE `category` SET  `cate_name` = '{$cate_name}', `cate_icon` = '{$cate_icon}' WHERE `cate_id` = '{$category['cate_id']}'";
+        $sql = "UPDATE `category` SET `cate_name` = '{$cate_name}', `cate_icon` = '{$cate_icon}' WHERE `cate_id` = '{$category['cate_id']}'";
         execute_query($sql);
         echo "<script>history.go(-2)</script>";
     }
