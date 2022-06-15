@@ -8,7 +8,7 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 //Load Composer's autoloader
 // require 'vendor/autoload.php';
-function send_password_mail($userEmail, $code)
+function send_verify_code($userEmail, $code)
 {
     $mail = new PHPMailer(true);
     try {
@@ -33,7 +33,7 @@ function send_password_mail($userEmail, $code)
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = 'WE SEND YOU VERIFICATION CODE!';
-        $mail->Body    = "Use this code to to change new password: <b>{$code}</b>";
+        $mail->Body    = "Use this code to to change new password: <b>{$code}</b><br/><b>It's only effective for 5 minutes!</b>";
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
         $mail->send();
         echo "<script>alert(`Check your email to get new password!`)</script>";
