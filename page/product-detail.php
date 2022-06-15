@@ -150,7 +150,7 @@ if (isset($_POST['post-comment'])) {
         $sql = "INSERT INTO `comments`(`content`, `user_id`, `product_id`,`comment_date`) 
                 VALUES ('{$content}','{$user_id}','{$product_id}',CURRENT_TIME())";
         execute_query($sql);
-        echo "<script>window.location = window.location.href</script>";
+        // echo "<script>window.location = window.location.href</script>";
     } else "<script>
                 swal({
                     title: 'Failed!',
