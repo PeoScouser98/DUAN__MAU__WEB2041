@@ -115,7 +115,7 @@ $error = [];
 if (isset($_POST['signup-submit'])) {
     if (empty($error)) {
         $account = $_POST['account'];
-        $password = $_POST['password'];
+        $password = md5($_POST['password']);
         $username = $_POST['username'];
         $email = $_POST['email'];
         $address = $_POST['address'];
