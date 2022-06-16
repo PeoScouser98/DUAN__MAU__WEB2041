@@ -151,13 +151,5 @@ if (isset($_POST['post-comment'])) {
                 VALUES ('{$content}','{$user_id}','{$product_id}',CURRENT_TIME())";
         execute_query($sql);
         echo "<script>window.location = window.location.href</script>";
-    } else "<script>
-                swal({
-                    title: 'Failed!',
-                    text: 'You have to login to comment!',
-                    icon: 'error',
-                    button: false,
-                    timer: 1500,
-                });
-            </script>";
+    } else echo "<script>alert(`You have to login to post comment`)</script>";
 }
