@@ -35,7 +35,7 @@
 </style>
 <div class="container-fluid" style="background-color: grey;">
     <div class="container row px-0 bg-white mx-auto">
-        <aside class="col-3 bg-dark d-flex justify-content-center flex-column gap-5" style="padding: 50px">
+        <aside class="col-3 bg-dark d-flex justify-content-center flex-column gap-5" style="padding: 40px">
             <!-- avatar -->
             <div>
                 <form action="" method="POST" enctype="multipart/form-data" class="mb-5" onsubmit="loadImage(this)">
