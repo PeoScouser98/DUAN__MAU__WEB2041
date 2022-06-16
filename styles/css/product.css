@@ -98,11 +98,6 @@ input[type="number"] {
 .product-name::-webkit-scrollbar {
 	display: none;
 }
-.add-cart-btn:hover {
-	background: var(--secondary);
-	color: var(--primary);
-	transition: ease-in-out 0.3s;
-}
 .card:hover {
 	transform: translateY(-10px);
 	box-shadow: 0 15px 20px var(--bg-primary);
@@ -122,8 +117,12 @@ input[type="number"] {
 .check-out-btn:hover {
 	background: var(--secondary);
 	color: var(--primary);
+	font-weight: 500;
+	transition: ease-in-out 0.3s;
 }
-
+.add-wish-list__btn:hover {
+	color: var(--secondary);
+}
 #comment-list {
 	overflow: auto;
 }
@@ -142,6 +141,10 @@ input[type="number"] {
 #comment-list::-webkit-scrollbar-thumb {
 	background: lightgray;
 	border-radius: 5px;
+}
+.pagination-button:hover {
+	background-color: black;
+	color: white;
 }
 /* cart list */
 @media (min-width: 1025px) {

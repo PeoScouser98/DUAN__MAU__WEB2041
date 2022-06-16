@@ -67,6 +67,7 @@ if (isset($_GET['keyword'])) :
 endif;
 
 ?>
+
 <div>
     <?php include './components/banner.php' ?>
 </div>

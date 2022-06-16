@@ -25,7 +25,7 @@ function render_product_slider($sql)
                         <div class="product-name overflow-auto">
                             <h6 class="fw-bold text-secondary text-nowrap"><?= $product_name ?></h6>
                         </div>
-                        <h6 class="fw-bold text-secondary">In Stock: <span class="text-success"><?= $stock ?></span></h6>
+                        <h6 class="fw-bold text-secondary">In Stock: <span class="text-primary"><?= $stock ?></span></h6>
                         <?php if ($discount == 0) : ?>
                             <h4 class=" fw-semibold"><?= "$" . $price ?></h4>
                         <?php endif; ?>
@@ -47,9 +47,9 @@ function render_product_slider($sql)
                                 <input id="form1" min="1" name="quantity" value="1" type="number" class="form-control form-control-sm" style="width:4rem" />
                                 <button type="button" class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="fas fa-plus"></i></button>
                             </div>
-                            <button type="submit" class="border-0 bg-transparent fs-4 fw-bold" name="add-to-wishlist"><i class="bi bi-heart"></i></button>
+                            <button type="submit" class="add-wish-list__btn border-0 bg-transparent fs-4 fw-bold" name="add-to-wishlist"><i class="bi bi-heart"></i></button>
                         </div>
-                        <button type="submit" name="add-to-cart" class="add-cart-btn btn bg-dark text-white w-100 d-block border-0" onclick="showMessage()" style="max-width: 100%; margin: 0 auto">
+                        <button type="submit" name="add-to-cart" class="add-cart-btn btn w-100 d-block border-0" onclick="showMessage()" style="max-width: 100%; margin: 0 auto">
                             <i class="bi bi-cart3"></i>
                             <span>Add To Cart</span>
                         </button>
@@ -67,12 +67,13 @@ function render_product_slider($sql)
 function render_product_cards($data, $imgdir, $pagination)
 {
 ?>
+
     <div class="container row gap-xxl-4 gap-lg-3 my-5 mx-auto" style="max-width:100%;">
         <?php
         foreach ($data as $item) : extract($item);
         ?>
             <!-- render các sản phẩm được chọn trong danh mục  -->
-            <div class="card col-4 postion-relative px-0 rounded-3" style="max-width:16rem;height:auto">
+            <div class="card col-4 postion-relative px-0 rounded-3 d-flex justify-content-between align-items-center flex-column" style="max-width:16rem;height:auto">
                 <?php if ($discount > 0) : ?>
                     <span class='position-absolute text-white fw-bold bg-danger px-2 py-1 top-0 end-0'><?= 'Discount ' . $discount . '%' ?></span>
                 <?php endif; ?>
@@ -108,11 +109,11 @@ function render_product_cards($data, $imgdir, $pagination)
                                 <input min="1" name="quantity" value=1 type="number" class="form-control form-control-sm" style="width:4rem" />
                                 <button type="button" class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i class="fas fa-plus"></i></button>
                             </div>
-                            <button type="submit" class="border-0 bg-transparent fs-4 fw-bold" name="add-to-wishlist"><i class="bi bi-heart"></i></button>
+                            <button type="submit" class="add-wish-list__btn border-0 bg-transparent fs-4 fw-bold" name="add-to-wishlist"><i class="bi bi-heart"></i></button>
                         </div>
-                        <button type="submit" name="add-to-cart" class="add-cart-btn btn bg-dark text-white w-100 d-block border-0" onclick="showMessage()" style="max-width: 100%; margin: 0 auto">
-                            <i class="bi bi-cart3"></i>
-                            <span>Add To Cart</span>
+                        <button type="submit" name="add-to-cart" class="add-cart-btn btn w-100 d-block border-0" style="max-width: 100%; margin: 0 auto">
+                            <span class="fs-5"><i class="bi bi-cart3"></i></span>
+                            <span class="ps-2">Add To Cart</span>
                         </button>
                     </form>
                 </div>
@@ -124,9 +125,9 @@ function render_product_cards($data, $imgdir, $pagination)
             <?php
             for ($i = 1; $i <= $pagination['lastIndex']; $i++) {
                 if (isset($_GET['groupby']))
-                    echo "<a href='?page=products&groupby={$_GET['groupby']}&tabindex={$i}#cate' class='btn btn-dark'>{$i}</a>";
+                    echo "<a href='?page=products&groupby={$_GET['groupby']}&tabindex={$i}#cate' class='btn border-dark pagination-button'>{$i}</a>";
                 else
-                    echo "<a href='?page=products&tabindex={$i}#cate' class='btn btn-dark'>{$i}</a>";
+                    echo "<a href='?page=products&tabindex={$i}#cate' class='btn border-dark pagination-button'>{$i}</a>";
             }
             ?>
         </div>
