@@ -1,7 +1,7 @@
 <?php
 $categories = select_all_records("SELECT * FROM category");
 ?>
-<div class="wrapper d-flex position-sticky top-0 d-sm-none d-xxl-block w-100">
+<div class="wrapper d-flex position-sticky top-0 w-100">
     <div class="sidebar">
         <form action="?page=products" method="GET" class="mb-5">
             <div class="input-group rounded-pill d-flex align-items-center gap-2 px-2 border border-1 border-dark">
