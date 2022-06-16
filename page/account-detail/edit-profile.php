@@ -7,7 +7,7 @@ $error = [];
         <!-- user name -->
         <div class="mb-3 ">
             <label for="username" class="form-label">What should we call you ?</label>
-            <input type="text" name="username" id="username" class="form-control" value="<?php echo $userData['user_name'] ?>">
+            <input type="text" name="username" id="username" class="form-control">
             <small class="form-text fw-bold text-danger">
                 <?php
                 check_empty('username', "user's name");
@@ -17,7 +17,7 @@ $error = [];
         <!-- email -->
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" name="email" id="email" value=<?php echo $userData['email'] ?> aria-describedby="fileHelpId">
+            <input type="email" class="form-control" name="email" id="email" aria-describedby="fileHelpId">
             <small id="fileHelpId" class="form-text fw-bold text-danger">
                 <?php
                 check_empty('email', 'email');
@@ -28,7 +28,7 @@ $error = [];
         <!-- phone -->
         <div class="mb-3">
             <label for="phone" class="form-label">Phone number</label>
-            <input type="text" min=0 class="form-control" name="phone" id="phone" aria-describedby="helpId" value=<?php echo $userData['phone'] ?>>
+            <input type="text" min=0 class="form-control" name="phone" id="phone" aria-describedby="helpId">
             <small class="form-text fw-bold text-danger">
                 <?php
                 check_empty('phone', "phone number");
@@ -39,7 +39,7 @@ $error = [];
         <!-- address -->
         <div class="mb-3 ">
             <label for="address" class="form-label">Address</label>
-            <input type="text" name="address" id="address" class="form-control" value="<?php echo $userData['address'] ?>">
+            <input type="text" name="address" id="address" class="form-control">
             <small class="form-text fw-bold text-danger">
                 <?php
                 check_empty('address', 'address');
