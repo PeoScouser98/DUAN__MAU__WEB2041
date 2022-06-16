@@ -43,7 +43,7 @@ function get_highestTurnover_byMonth($month)
             $statistics = get_highestTurnover_byMonth($month);
             if (empty($statistics)) :
                 echo '<tr>
-                <td colspan="3"><h3 class="text-muted text-center">No Data</h3></td>
+                <td colspan="4" class="py-5"><h2 class="text-muted text-center">No Data</h2></td>
                 </tr>';
             endif;
             $totalTurnover = 0;
