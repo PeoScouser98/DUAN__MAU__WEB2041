@@ -92,7 +92,7 @@ if (isset($_GET['groupby'])) {
             <?php
                 endforeach;
             } else
-                echo "<tr><td colspan='7' class='text-center text-danger fw-bold'>There is no products</td></tr>";
+                echo "<tr><td colspan='9' class='text-center text-danger fw-bold py-5'>There is no products</td></tr>";
 
             ?>
         </tbody>
