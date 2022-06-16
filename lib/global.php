@@ -7,11 +7,14 @@ $IMG_ROOT = '/ecommerce/assets/img/products/';
 function strStandardize($string)
 {
     $string = trim($string);
-    $substr = explode(" ", $string);
-    for ($i = 0; $i < count($substr); $i++) {
-        $substr[$i] = strtolower($substr[$i]);
+    while (strpos($string, "  ")) {
+        $string = str_replace("  ", " ", $string);
     }
-    $result  = implode(" ", $substr);
+    $subString = explode(" ", $string);
+    $result = "";
+    for ($i = 0; $i < count($subString); $i++) {
+        $result = $result . " " . strtolower($subString[$i]);
+    }
     return $result;
 }
 
