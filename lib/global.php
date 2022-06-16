@@ -1,4 +1,6 @@
 <?php
+$ROOT_AVATAR_ADMIN = "../assets/img/avatar/";
+$IMG_ROOT_ADMIN = '../assets/img/products/';
 $ROOT_AVATAR = "/ecommerce/assets/img/avatar/";
 $IMG_ROOT = '/ecommerce/assets/img/products/';
 // chuẩn hóa chuỗi

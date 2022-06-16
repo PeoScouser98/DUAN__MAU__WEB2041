@@ -30,7 +30,7 @@ $userList = select_all_records($sql);
                 foreach ($userList as $user) :
             ?>
                     <tr>
-                        <td><img src=<?php echo $ROOT_AVATAR . $user['avatar'] ?> class="rounded-circle" style="max-width:60px; height:60px"></td>
+                        <td><img src=<?php echo $ROOT_AVATAR_ADMIN . $user['avatar'] ?> class="rounded-circle" style="max-width:60px; height:60px"></td>
                         <td class="d-none"><?= $user['user_id'] ?></td>
                         <td><?= $user['user_name'] ?></td>
                         <td><?= $user['phone'] ?></td>

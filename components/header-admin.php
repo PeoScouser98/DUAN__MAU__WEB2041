@@ -70,7 +70,7 @@
                 </ul>
                 <!-- hiển thị thông tin đăng nhập ở đây -->
                 <div class="d-flex justify-content-end align-items-center gap-3">
-                    <img src=<?php echo $ROOT_AVATAR  . $userData['avatar'] ?> alt="" class="rounded-circle" id="header-avatar" style="max-width:60px">
+                    <img src=<?php echo $ROOT_AVATAR_ADMIN  . $userData['avatar'] ?> alt="" class="rounded-circle" id="header-avatar" style="max-width:60px">
                     <li class="nav-item dropdown d-block">
                         <a class="nav-link dropdown-toggle align-middle fw-bold" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <?= (isset($_SESSION['user_name'])) ? $_SESSION['user_name'] : "" ?>

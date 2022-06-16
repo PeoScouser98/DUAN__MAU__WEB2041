@@ -1,6 +1,5 @@
 <?php
 $categories = select_all_records("SELECT * FROM category");
-
 $QTY_EACH_PAGE = 5;
 if (isset($_GET['groupby'])) {
     $pagination = paginate_page("SELECT COUNT(product_id) FROM product WHERE product.cate_id = {$_GET['groupby']}", $QTY_EACH_PAGE);
@@ -80,7 +79,7 @@ if (isset($_GET['groupby'])) {
                         <td><?= $product['stock'] ?></td>
                         <td><?= $product['price'] ?></td>
                         <td><?= $product['discount'] ?></td>
-                        <td><img src=<?= $IMG_ROOT .  $product['product_img'] ?> style="max-width:100px; height:100px; object-fit:contain"></td>
+                        <td><img src=<?= $IMG_ROOT_ADMIN .  $product['product_img'] ?> style="max-width:100px; height:100px; object-fit:contain"></td>
                         <td>
                             <div class="scroll" style="height: 100px;"><?= $product['product_description'] ?></div>
                         </td>
