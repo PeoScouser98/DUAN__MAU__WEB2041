@@ -1,7 +1,6 @@
 <?php
-// xóa toàn bộ tài đã lưu trong session
+// xóa toàn bộ tài khoản đã lưu trong session
 session_destroy();
-setcookie('id', '', -1);
-header("Location:./index.php");
-
+setcookie('id', '', -9999);
+header("Location:./");
 // back lại về trang chủ
