@@ -30,15 +30,6 @@ function add_cart()
             if (!$isDuplicated) array_push($_SESSION['cart'], $cart_item);
             echo "<script>alert(`Added To Cart!`);</script>";
             echo "<script>history.go(-1)</script>";
-        } else echo "<script>
-                        swal({
-                            title: 'Failed!',
-                            text: 'You have to login to buy product!',
-                            icon: 'error',
-                            button: false,
-                            timer: 1500,
-                        });
-                    </script>";
+        } else echo "<script>alert(`You have to login to buy products!`)</script>";
     }
 }
-// echo"<script>alert(`Add to cart successfully!`)</script>";
