@@ -67,12 +67,12 @@ function render_product_slider($sql)
 function render_product_cards($data, $imgdir, $pagination)
 {
 ?>
-    <div class="container-fluid row gap-4 my-5 mx-auto" style="max-width:100%">
+    <div class="container row gap-xxl-4 gap-lg-3 my-5 mx-auto" style="max-width:100%;">
         <?php
         foreach ($data as $item) : extract($item);
         ?>
             <!-- render các sản phẩm được chọn trong danh mục  -->
-            <div class="card postion-relative col-4 px-0 d-flex justify-content-between flex-column align-items-center rounded-3" style="max-width: 18rem;height:auto">
+            <div class="card col-4 postion-relative px-0 rounded-3" style="max-width:16rem;height:auto">
                 <?php if ($discount > 0) : ?>
                     <span class='position-absolute text-white fw-bold bg-danger px-2 py-1 top-0 end-0'><?= 'Discount ' . $discount . '%' ?></span>
                 <?php endif; ?>
@@ -86,7 +86,7 @@ function render_product_cards($data, $imgdir, $pagination)
                         <div class="overflow-auto product-name" style="width:100%">
                             <h6 class="text-secondary text-nowrap"><?= $product_name ?></h6>
                         </div>
-                        <h6 class="fw-bold text-secondary">In Stock: <span class="text-success"><?= $stock ?></span></h6>
+                        <h6 class="fw-bold text-secondary">In Stock: <span class="text-primary"><?= $stock ?></span></h6>
                         <?php if ($discount == 0) : ?>
                             <h4 style="font-size:18px"><?= "$" . $price ?></h4>
                         <?php endif; ?>
