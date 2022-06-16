@@ -1,6 +1,6 @@
 <div class="header-top">
     <div class="d-flex justify-content-between align-items-center container">
-        <a href="http://localhost:8080/ecommerce/?page=home">
+        <a href="./?page=home">
             <img src="./assets/img/Xshop-logo.png" alt="" class="logo img-fluid" style="max-width: 150px" />
         </a>
         <div class="header-contact">

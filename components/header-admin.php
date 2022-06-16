@@ -3,7 +3,7 @@
 ?>
 <div class="header-top">
     <div class="container d-flex justify-content-between align-items-center container-fluid">
-        <a href="http://localhost:8080/ecommerce/admin/">
+        <a href="./">
             <img src="../assets/img/Xshop-logo.png" alt="" class="logo img-fluid" style="max-width: 150px" />
         </a>
         <div class="header-contact">

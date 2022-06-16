@@ -1,8 +1,8 @@
 <?php
 $ROOT_AVATAR_ADMIN = "../assets/img/avatar/";
 $IMG_ROOT_ADMIN = '../assets/img/products/';
-$ROOT_AVATAR = "/ecommerce/assets/img/avatar/";
-$IMG_ROOT = '/ecommerce/assets/img/products/';
+$ROOT_AVATAR = "./assets/img/avatar/";
+$IMG_ROOT = './assets/img/products/';
 // chuẩn hóa chuỗi
 function strStandardize($string)
 {
@@ -23,7 +23,6 @@ function strStandardize($string)
 function upload_file($directory, $inputFileName)
 {
     if (isset($_FILES)) {
-        print_r($_FILES);
         $file_name = $_FILES[$inputFileName]['full_path'];
         $path = $directory . $file_name;
         move_uploaded_file($_FILES[$inputFileName]['tmp_name'], $path);

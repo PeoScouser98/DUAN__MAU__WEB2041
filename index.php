@@ -27,9 +27,9 @@ session_start();
     <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/d2bf59f6fb.js" crossorigin="anonymous"></script>
     <!-- custom css -->
-    <link rel="stylesheet" href="/ecommerce/styles/css/main.css" />
-    <link rel="stylesheet" href="/ecommerce/styles/css/product.css" />
-    <link rel="stylesheet" href="/ecommerce/styles/css/cart-list.css" />
+    <link rel="stylesheet" href="./styles/css/main.css" />
+    <link rel="stylesheet" href="./styles/css/product.css" />
+    <link rel="stylesheet" href="./styles/css/cart-list.css" />
     <!-- owl carousel -->
     <link rel="stylesheet" href="./node_modules/owl.carousel/dist/assets/owl.carousel.min.css" />
     <script src="./node_modules/jquery/dist/jquery.js"></script>
