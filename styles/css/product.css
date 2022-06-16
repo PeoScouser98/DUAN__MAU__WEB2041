@@ -41,6 +41,16 @@ ul li a img {
 	border: none;
 	width: 20px;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+input[type="number"] {
+	appearance: none;
+	-webkit-appearance: none;
+	margin: 0;
+}
 .sidebar ul li {
 	padding: 15px;
 }
