@@ -6,11 +6,10 @@ if (isset($_GET['delId'])) {
     echo "<script>history.go(-1)</script>";
 }
 if (isset($_POST['delete-all']) && isset($_POST['delId'])) {
-    print_r($_POST['delId']);
     if (is_array($_POST['delId'])) {
         foreach ($_POST['delId'] as $id) :
             execute_query("DELETE FROM comments WHERE comment_id = '{$id}'");
-            echo "<script>history.go(-1)</script>";
         endforeach;
+        echo "<script>history.go(-1)</script>";
     }
 }
