@@ -4,19 +4,24 @@ include './lib/execute_query.php';
 session_start();
 if (isset($_POST['login-submit'])) {
     $account = $_POST['account'];
-    $password = substr(md5($_POST['password'], false), 0, 20);
+    $password = $_POST['password'];
     if (empty($account) || empty($password))
         echo "<script>alert(`Please enter your account and password!`);</script>";
-
     if (!empty($account) && !empty($password)) :
         $userData = select_single_record("SELECT * FROM users WHERE user_id = '{$account}'");
         if (!is_null($userData)) {
-            if ($password == $userData['user_password']) {
+            if (password_verify($password, $userData['user_password'])) {
                 setcookie("id", $userData['user_id']);
                 $_SESSION['user_name'] = $userData['user_name'];
-                $userData['role_id'] == 1 ? header("Location: ./admin/") : header("Location:./?id={$account}");
+                if ($userData['role_id'] == 1) {
+                    echo  "<script>alert(`Login successfully!`)</script>";
+                    echo  "<script>window.location = './admin/'</script>";
+                } else {
+                    echo  "<script>alert(`Login successfully!`)</script>";
+                    echo  "<script>window.location = './'</script>";
+                }
             } else
-                echo "<script>alert(`Account or password is incorrect!`)</script>";
+                echo "<script>alert(`Password is incorrect!`)</script>";
         }
         // nếu kết quả trả về từ câu truy vẫn = null -> tài khoản không tồn tại
         else

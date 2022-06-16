@@ -73,10 +73,10 @@ if (isset($_POST['change-password']) && isset($_COOKIE['user_id'])) :
     $verifyCode = select_one_value("SELECT * FROM users WHERE user_id = '{$_COOKIE['user_id']}'");
     if (empty($error)) {
         if ($code = $verifyCode) {
-            $newPassword = md5($_POST['new_password']);
+            $newPassword = password_hash($_POST['new_password'], PASSWORD_DEFAULT);
             execute_query("UPDATE users SET user_password = '{$newPassword}' WHERE user_id = '{$_COOKIE['user_id']}'");
             echo "<script>alert(`Change password successfully!`);</script>";
-            setcookie("user_id", "", time() - 300);
+            setcookie("user_id", "", time() - 301);
             echo "<script>window.location = window.location.href</script>";
         } else
             echo "<script>alert(`Verification code is incorrect!`);</script>";
