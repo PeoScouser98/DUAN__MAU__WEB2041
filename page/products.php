@@ -70,39 +70,38 @@ endif;
 <div>
     <?php include './components/banner.php' ?>
 </div>
-<div class="container-fluid" style="background-color: grey;">
-    <div class="container bg-white">
-        <div class="row px-0 m-0">
-            <div class="col-3 px-0">
-                <!-- fixed aside menu -->
-                <?php include './components/aside-menu.php'; ?>
-            </div>
-            <div class="col-9 mx-auto px-0 py-5" style="max-width:100%">
-                <div class="container row">
-                    <div class="col-6">
-                        <h3 id="cate"><?= $itemLabel ?></h3>
-                    </div>
-                    <div class="col-6 px-0">
-                        <select class="form-select w-auto" onchange="window.location = this.value" style="float: right;">
-                            <?php if (isset($_GET['groupby'])) : ?>
-                                <option value=<?php echo "?page=products&groupby={$_GET['groupby']}&sort=asc#cate" ?> <?php echo isset($_GET['sort']) && $_GET['sort'] == 'asc' ? "selected" : "" ?>>Ascending Price</option>
-                                <option value=<?php echo "?page=products&groupby={$_GET['groupby']}&sort=desc#cate" ?> <?php echo isset($_GET['sort']) && $_GET['sort'] == 'desc' ? "selected" : "" ?>>Descending Price</option>
-                            <?php endif; ?>
-                            <?php if (isset($_GET['keyword'])) :  ?>
-                                <option value=<?php echo "?page=products&keyword={$_GET['keyword']}&sort=asc#cate" ?> <?php echo isset($_GET['sort']) && $_GET['sort'] == 'asc' ? "selected" : "" ?>>Ascending Price</option>
-                                <option value=<?php echo "?page=products&keyword={$_GET['keyword']}&sort=desc#cate" ?> <?php echo isset($_GET['sort']) && $_GET['sort'] == 'desc' ? "selected" : "" ?>>Descending Price</option>
-                            <?php endif; ?>
-                            <?php if (!isset($_GET['groupby']) && !isset($_GET['keyword'])) :  ?>
-                                <option value=<?php echo "?page=products&sort=asc#cate" ?> <?php echo isset($_GET['sort']) && $_GET['sort'] == 'asc' ? "selected" : "" ?>>Ascending Price</option>
-                                <option value=<?php echo "?page=products&sort=desc#cate" ?> <?php echo isset($_GET['sort']) && $_GET['sort'] == 'desc' ? "selected" : "" ?>>Descending Price</option>
-                            <?php endif; ?>
-                        </select>
-                    </div>
+<div class="container-fluid px-0" style="background-color: grey;">
+    <div class="container row px-0 bg-white mx-auto">
+        <!-- fixed aside menu -->
+        <div class="col-3 px-0">
+            <?php include './components/aside-menu.php'; ?>
+        </div>
+        <!-- product list -->
+        <div class="container col-9 mx-auto px-0 py-5" style="max-width:100%">
+            <div class="container d-flex justify-content-between align-items-center">
+                <div>
+                    <h3 id="cate"><?= $itemLabel ?></h3>
                 </div>
-                <?php
-                render_product_cards($products, $IMG_ROOT, $pagination);
-                ?>
+                <div class="px-0 d-flex justify-content-end">
+                    <select class="form-select w-auto" onchange="window.location = this.value">
+                        <?php if (isset($_GET['groupby'])) : ?>
+                            <option value=<?php echo "?page=products&groupby={$_GET['groupby']}&sort=asc#cate" ?> <?php echo isset($_GET['sort']) && $_GET['sort'] == 'asc' ? "selected" : "" ?>>Ascending Price</option>
+                            <option value=<?php echo "?page=products&groupby={$_GET['groupby']}&sort=desc#cate" ?> <?php echo isset($_GET['sort']) && $_GET['sort'] == 'desc' ? "selected" : "" ?>>Descending Price</option>
+                        <?php endif; ?>
+                        <?php if (isset($_GET['keyword'])) :  ?>
+                            <option value=<?php echo "?page=products&keyword={$_GET['keyword']}&sort=asc#cate" ?> <?php echo isset($_GET['sort']) && $_GET['sort'] == 'asc' ? "selected" : "" ?>>Ascending Price</option>
+                            <option value=<?php echo "?page=products&keyword={$_GET['keyword']}&sort=desc#cate" ?> <?php echo isset($_GET['sort']) && $_GET['sort'] == 'desc' ? "selected" : "" ?>>Descending Price</option>
+                        <?php endif; ?>
+                        <?php if (!isset($_GET['groupby']) && !isset($_GET['keyword'])) :  ?>
+                            <option value=<?php echo "?page=products&sort=asc#cate" ?> <?php echo isset($_GET['sort']) && $_GET['sort'] == 'asc' ? "selected" : "" ?>>Ascending Price</option>
+                            <option value=<?php echo "?page=products&sort=desc#cate" ?> <?php echo isset($_GET['sort']) && $_GET['sort'] == 'desc' ? "selected" : "" ?>>Descending Price</option>
+                        <?php endif; ?>
+                    </select>
+                </div>
             </div>
+            <?php
+            render_product_cards($products, $IMG_ROOT, $pagination);
+            ?>
         </div>
     </div>
 </div>

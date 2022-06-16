@@ -22,16 +22,16 @@ add_cart();
 </script>
 <div class="container-fluid" style="background-color: grey;">
     <div class="container row bg-white mx-auto px-0">
-        <div class="col-xs-12 col-xxl-3">
+        <div class="col-3 px-0">
             <?php include './components/aside-menu.php'; ?>
         </div>
-        <div class="container col-xs-12 col-xxl-9 row d-flex flex-column gap-5 p-5" style="max-width:100%; margin: 0 auto;">
+        <div class="container col-9 row d-flex flex-column gap-5 py-5" style="max-width:100%; margin: 0 auto;">
             <!-- product's detail -->
             <div class="row align-items-stretch ps-0">
-                <div class="col-xs-12 col-xxl-6">
+                <div class="col-6">
                     <img src=<?= $IMG_ROOT . $product['product_img'] ?> alt="" class="img-fluid" />
                 </div>
-                <div class="col-xs-12 col-xxl-6 border-start ps-5">
+                <div class="col-6 border-start ps-5">
                     <form action="" method="post" class="d-flex justify-content-start align-items-start flex-column gap-4">
                         <div class="form-group border-bottom">
                             <h3 class="mb-4"><?php echo $product['product_name'] ?></h3>
@@ -43,7 +43,7 @@ add_cart();
                             <h4 class="mb-4">
                                 <span class="text-secondary">In Stock: </span>
                                 <?php
-                                echo  $product['stock'] > 0 ?  "<span class='text-success'>{$product['stock']}</span>" : "<span class='text-danger'>Out of stock!</span>";
+                                echo  $product['stock'] > 0 ?  "<span class='text-primary'>{$product['stock']}</span>" : "<span class='text-danger'>Out of stock!</span>";
                                 ?>
                             </h4>
                         </div>
@@ -150,7 +150,7 @@ if (isset($_POST['post-comment'])) {
         $sql = "INSERT INTO `comments`(`content`, `user_id`, `product_id`,`comment_date`) 
                 VALUES ('{$content}','{$user_id}','{$product_id}',CURRENT_TIME())";
         execute_query($sql);
-        // echo "<script>window.location = window.location.href</script>";
+        echo "<script>window.location = window.location.href</script>";
     } else "<script>
                 swal({
                     title: 'Failed!',
