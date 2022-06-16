@@ -1,5 +1,4 @@
 <?php
-$IMG_ROOT = '/ecommerce/assets/img/products/';
 // remove item in cart
 if (isset($_SESSION['cart']) && isset($_GET['del_id'])) {
     array_splice($_SESSION['cart'], $_GET['del_id'], 1);
@@ -63,6 +62,10 @@ endif;
     .update-cart-btn:hover {
         color: greenyellow
     }
+
+    .product-infor::-webkit-scrollbar {
+        display: none;
+    }
 </style>
 <section class="h-100" style="background-color: grey;">
     <div class="container h-100">
@@ -91,7 +94,7 @@ endif;
                                                     <hr class="my-4">
                                                     <form action="" method="POST">
                                                         <div class="row mb-4 d-flex justify-content-between align-items-center">
-                                                            <div class="col-2" style="width:auto">
+                                                            <div class="col-1" style="width:auto">
                                                                 <button type="submit" name="update-cart" class="update-cart-btn border-0 bg-transparent text-muted" onclick="window.location.reload()">
                                                                     <i class="bi bi-pencil-square"></i>
                                                                 </button>
@@ -99,11 +102,11 @@ endif;
                                                             <div class="col-2">
                                                                 <img src=<?= $IMG_ROOT . $image ?> class="img-fluid rounded-3" style="max-width:100px">
                                                             </div>
-                                                            <div class="col-2">
-                                                                <h6 class="text-black mb-2"><?php echo $name ?></h6>
+                                                            <div class="col-4 product-infor overflow-auto">
+                                                                <h6 class="text-black mb-2 text-nowrap"><?php echo $name ?></h6>
                                                                 <h6 class="mb-0 price text-secondary"><?php echo "$" . $price ?></h6>
                                                             </div>
-                                                            <div class="col-2 d-flex">
+                                                            <div class="col-1 d-flex">
                                                                 <input type="hidden" class="" name="index" value=<?php echo $index ?>>
                                                                 <input type="hidden" class="" name="product_id" value=<?php echo $id ?>>
                                                                 <input type="hidden" class="" name="product_img" value=<?php echo $image ?>>
@@ -111,13 +114,13 @@ endif;
                                                                 <input type="hidden" class="price border-0 bg-transparent fs-5 fw-semi-bold" name="price" value=<?= $price ?>>
                                                                 <input type="hidden" class="total border-0 bg-transparent fs-5 fw-semi-bold" name="total" value=<?= $total ?>>
                                                                 <div class=" d-flex">
-                                                                    <input min="1" name="quantity" value=<?= $qty ?> type="number" class="form-control form-control-sm" oninput="getTotalPrice(this)" />
+                                                                    <input min="1" name="quantity" value=<?= $qty ?> type="number" class="form-control" style="width:3.5rem" oninput="getTotalPrice(this)" />
                                                                 </div>
                                                             </div>
                                                             <div class="col-2 offset-lg-1">
                                                                 <h6 class="mb-0 total-price"><?= '$' . $total ?></h6>
                                                             </div>
-                                                            <div class="col-2 text-end">
+                                                            <div class="col-1 text-end">
                                                                 <a href=<?= "?page=cart-list&del_id={$index}#cart" ?> class="delete-btn text-muted"><i class="fas fa-times"></i></a>
                                                             </div>
                                                         </div>
