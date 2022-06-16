@@ -99,7 +99,7 @@ $roles = select_all_records($sql);
         <!-- submit -->
         <div class="mb-3">
             <button type="button" onclick="clearFormData()" class="btn bg-transparent text-dark border-dark">Reset All Data</button>
-            <input type="submit" class="btn bg-dark text-white vertical-align-top" rows="10" name="submit" value="Add New Account">
+            <button type="submit" name="submit" class="btn btn-dark">Add New Account</button>
         </div>
     </form>
 </div>
