@@ -103,7 +103,7 @@ if (isset($_POST['submit'])) {
                 WHERE product_id = '{$_GET['id']}'";
         execute_query($sql);
         echo "<script>alert(`Edit product successfully!`)</script>";
-        echo "<script>history.go(-1)</script>";
+        echo "<script>window.location = '?page=product-list'</script>";
     } else {
         echo "<script>alert(`Failed!`)</script>";
     }

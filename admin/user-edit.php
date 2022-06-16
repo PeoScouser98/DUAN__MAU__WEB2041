@@ -64,7 +64,7 @@ $error = [];
         <!-- address -->
         <div class="mb-3 ">
             <label for="address" class="form-label">Address</label>
-            <input type="text" name="address" id="address" class="form-control" value="<?php $user['address'] ?>">
+            <input type="text" name="address" id="address" class="form-control" value="<?php echo $user['address'] ?>">
             <small class="form-text fw-bold text-danger">
                 <?php
                 check_empty('address', 'address');
@@ -74,7 +74,7 @@ $error = [];
         <!-- user role -->
         <div class="mb-3">
             <label for="role" class="form-label">Role</label>
-            <select class="form-control" name="role" id="role">
+            <select class="form-select" name="role" id="role">
                 <option value="">-- Select --</option>
                 <?php
                 foreach ($roles as $role) {
@@ -90,7 +90,7 @@ $error = [];
 
         <!-- submit -->
         <div class="mb-3">
-            <button type="button" onclick="clearFormData()" class="btn bg-transparent text-dark border-dark">Reset All Data</button>
+            <button type="button" onclick="clearFormData()" class="btn bg-transparent text-dark border-dark">Reset Form Data</button>
             <button type="submit" class="btn bg-dark text-white vertical-align-top" name="submit">Edit this account</button>
         </div>
     </form>
@@ -112,7 +112,7 @@ if (isset($_POST['submit']) && isset($_GET['id'])) {
                                  `role_id`= '{$role}'
                              WHERE user_id = '{$id}'";
         execute_query($sql);
-        echo "<script>history.go(-1)</script>";
+        echo "<script>window.location = '?page=user-list'</script>";
     } else {
         echo "<script>alert(`Check your information again!`)</script>";
     }

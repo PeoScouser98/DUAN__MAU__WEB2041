@@ -83,7 +83,7 @@ if (isset($_POST['search'])) {
         <div class="">
             <form action="" method="POST">
                 <div class="input-group rounded-pill d-flex align-items-center gap-2 px-2 border border-1 border-dark">
-                    <input type="number" name="order_id" class="form-control rounded-pill border-0 bg-transparent" id="search-input" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                    <input type="number" min=1 name="order_id" class="form-control rounded-pill border-0 bg-transparent" id="search-input" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                     <button type="submit" name="search" class="border-0" style="background-color: transparent"><i class="fas fa-search"></i></button>
                 </div>
             </form>
@@ -105,7 +105,7 @@ if (isset($_POST['search'])) {
             </thead>
             <tbody>
                 <?php
-                if (is_array($orders) && !is_null($orders)) {
+                if (is_array($orders) && !empty($orders)) {
                     foreach ($orders as $order) :
                         extract($order);
                 ?>
@@ -127,7 +127,7 @@ if (isset($_POST['search'])) {
                 <?php
                     endforeach;
                 } else
-                    echo "<tr><td colspan='7' class='text-center text-danger fw-bold'>There is no order!</td></tr>";
+                    echo "<tr><td colspan='7' class='text-center text-danger fw-bold'>No Result!</td></tr>";
                 ?>
             </tbody>
         </table>

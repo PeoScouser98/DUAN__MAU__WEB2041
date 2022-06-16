@@ -23,7 +23,7 @@ $cateList = select_all_records("SELECT * FROM category");
             ?>
                     <tr>
                         <td scope="row"><?php echo $category['cate_id'] ?></td>
-                        <td><?php echo $category['cate_name'] ?></td>
+                        <td><span><?php echo $category['cate_icon'] ?></span> <span class="ps-2"><?php echo $category['cate_name'] ?></span></td>
                         <td>
                             <a href=<?php echo "?page=cate-edit&id={$category['cate_id']}" ?> role="button " class="btn border border-2 border-dark">Edit</a>
                             <a href=<?php echo "./cate-del.php?id={$category['cate_id']}" ?> onclick="return confirm(`Are you sure?`)" role="button" class="btn btn-danger">Delete</a>

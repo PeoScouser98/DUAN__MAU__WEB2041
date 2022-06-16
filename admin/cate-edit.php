@@ -8,7 +8,7 @@ $error = [];
 
 ?>
 <div class="bg-white d-flex flex-column justify-content-center align-items-center gap-5 py-5" style="max-width:1200px; margin: 0 auto">
-    <h1 class="text-center text-secondary">Add New Category</h1>
+    <h1 class="text-center text-secondary">Edit Category</h1>
     <form action="" method="post" style="width: 40em">
         <!-- cate id -->
         <div class="mb-3">
@@ -29,11 +29,6 @@ $error = [];
         <div class="mb-3">
             <label for="cate-icon" class="form-label">Category's Icon</label>
             <input type="text" class="form-control" name="cate_icon" id="cate-icon" aria-describedby="helpId" placeholder="">
-            <small class="form-text text-danger fw-bold">
-                <?php
-                check_empty("cate_icon", "category's icon");
-                ?>
-            </small>
         </div>
         <!-- submit -->
         <div class="mb-3">
@@ -46,8 +41,20 @@ if (isset($_POST['submit'])) {
     if (empty($error)) {
         $cate_name = $_POST["cate_name"];
         $cate_icon = $_POST["cate_icon"];
-        $sql = "UPDATE `category` SET `cate_name` = '{$cate_name}', `cate_icon` = '{$cate_icon}' WHERE `cate_id` = '{$category['cate_id']}'";
-        execute_query($sql);
-        echo "<script>history.go(-2)</script>";
-    }
+        $isExisting = false;
+        $cateName = select_all_records("SELECT cate_name FROM category");
+        foreach ($cateName as $item) :
+            if (strStandardize($cate_name) == strStandardize($item['cate_name'])) :
+                $isExisting = true;
+                echo "<script>alert(`This category existed!`)</script>";
+                break;
+            endif;
+        endforeach;
+        if ($isExisting == false) {
+            $sql = "UPDATE `category` SET `cate_name` = '{$cate_name}', `cate_icon` = '{$cate_icon}' WHERE `cate_id` = '{$category['cate_id']}'";
+            execute_query($sql);
+            echo "<script>alert(`Updated this category`)</script>";
+            echo "<script>window.location = '?page=cate-list'</script>";
+        }
+    } else  echo "<script>alert(`Failed!`)</script>";
 }

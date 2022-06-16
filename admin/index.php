@@ -8,8 +8,6 @@ if (isset($_COOKIE['id'])) {
     $id = $_COOKIE['id'];
     $userData = select_single_record("SELECT * FROM `users` WHERE `user_id` = '{$id}'");
 }
-$ROOT_AVATAR = "/ecommerce/assets/img/avatar/";
-$ROOT_PRODUCT_IMG = "/ecommerce/assets/img/products/";
 ?>
 <!DOCTYPE html>
 <html lang="en">

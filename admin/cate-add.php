@@ -22,11 +22,6 @@ $error = [];
         <div class="mb-3">
             <label for="" class="form-label">Category's Icon</label>
             <input type="text" class="form-control" name="cate_icon" id="" aria-describedby="helpId" placeholder="">
-            <small class="form-text text-danger fw-bold">
-                <?php
-                check_empty("cate_icon", "category's icon");
-                ?>
-            </small>
         </div>
         <!-- submit -->
         <div class="mb-3">
@@ -55,7 +50,6 @@ if (isset($_POST['submit'])) :
             echo "<script>alert(`Add a new category successfully!`)</script>";
             echo "<script>window.location.reload()</script>";
         }
-    } else {
+    } else
         echo "<script>alert(`Failed!`)</script>";
-    }
 endif;
