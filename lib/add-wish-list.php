@@ -21,13 +21,8 @@ function add_to_wishlist()
                 $wishListId = select_one_value("SELECT wish_list_id FROM wish_list WHERE user_id = '{$_COOKIE['id']}'");
                 $sql = "INSERT INTO wish_list_detail (wish_list_id,product_id) VALUES ('{$wishListId}','{$product_id}')";
                 execute_query($sql);
-                echo "<script>alert(`Added to wish list`)</script>";
+                echo "<script>alert(`Added to wish list!`)</script>";
             }
-        } else echo "<script>swal({
-            title: 'Login to use this feature!',
-            icon: 'error',
-            button: false,
-            timer: 1500,
-            });</script>";
+        } else  echo "<script>alert(`Login to use this feature!`)</script>";
     endif;
 }
