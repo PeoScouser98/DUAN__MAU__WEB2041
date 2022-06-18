@@ -13,7 +13,7 @@ function strStandardize($string)
     $subString = explode(" ", $string);
     $result = "";
     for ($i = 0; $i < count($subString); $i++) {
-        $result = $result . " " . strtolower($subString[$i]);
+        $result .= " " . strtolower($subString[$i]);
     }
     return $result;
 }
@@ -29,6 +29,32 @@ function upload_file($directory, $inputFileName)
         return $file_name;
     }
 }
+function ftp_upload_file($inputName, $remote_dir)
+{
+    if (isset($_FILES[$inputName])); {
+        $ftp_hostname = "ftpupload.net";
+        $ftp_username = "b32_31975564";
+        $fpt_password = "03011998";
+        $port = 21;
+        // source file
+        $src_file = $_FILES[$inputName]['tmp_name'];
+        if ($src_file != '') {
+            $dst_file = $remote_dir . $_FILES[$inputName]['name']; // directory to upload
+            $ftp_conn = ftp_connect($ftp_hostname, $port) or die("cannot connect to ftp server!");
+            ftp_login($ftp_conn, $ftp_username, $fpt_password);
+            ftp_pasv($ftp_conn, true);
+            // check connection to ftp server
+            if (ftp_put($ftp_conn, $dst_file, $src_file, FTP_ASCII)) {  // upload file
+                echo "<script>alert(`Uploaded !`)</script>";
+                return $_FILES[$inputName]['name'];
+            } else {
+                echo "<script>alert(`Cannot upload!`)</script>";
+                return false;
+            }
+            ftp_close($ftp_conn);
+        }
+    }
+}
 // phân trang
 function paginate_page($qty_sql, $NO_ITEMS_EACH_PAGE)
 {
@@ -41,21 +67,4 @@ function paginate_page($qty_sql, $NO_ITEMS_EACH_PAGE)
         "startIndex" => $startIndex,
         "lastIndex" => $lastIndex
     );
-}
-
-function getCurrentPageURL($sort)
-{
-    $pageURL = 'http';
-    if (!empty($_SERVER['HTTPS'])) {
-        if ($_SERVER['HTTPS'] == 'on') {
-            $pageURL .= "s";
-        }
-    }
-    $pageURL .= "://";
-    if ($_SERVER["SERVER_PORT"] != "80") {
-        $pageURL .= $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . $_SERVER["REQUEST_URI"];
-    } else {
-        $pageURL .= $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
-    }
-    return $pageURL . $sort;
 }

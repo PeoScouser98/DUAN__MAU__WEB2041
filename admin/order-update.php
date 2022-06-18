@@ -22,9 +22,9 @@ if (isset($_POST['orderId']) && isset($_POST['mark-done'])) {
             execute_query("UPDATE orders SET status_id = 2 WHERE order_id = '{$orderId}'");
         endforeach;
         echo "<script>alert(`This order is completed!`) </script>";
-        echo "<script>history.go(-1)</script>";
+        echo "<script>window.location = '?page=order-list'</script>";
     } else {
-        echo "<script>setTimeout(history.go(-1),5000) </script>";
+        echo "<script>window.location = '?page=order-list'</script>";
         echo "<script>alert(`Failed!`) </script>";
     }
 }
@@ -36,8 +36,9 @@ if (isset($_POST['orderId']) && isset($_POST['cancel'])) {
             execute_query("UPDATE product SET stock = stock+ {$_POST['qty'][$i]} WHERE product_id = {$_POST['product_id'][$i]}");
         }
         echo "<script>alert(`This order is Canceled!`) </script>";
-        echo "<script>history.go(-1)</script>";
+        echo "<script>window.location = '?page=order-list'</script>";
     } else {
         echo "<script>alert(`Failed!`)</script>";
+        echo "<script>window.location = '?page=order-list'</script>";
     }
 }

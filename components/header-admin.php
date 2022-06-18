@@ -55,7 +55,7 @@
                     </li>
                     <!-- order -->
                     <li class="nav-item">
-                        <a class="nav-link" href="?page=order-list&filterby=all">Orders</a>
+                        <a class="nav-link" href="?page=order-list">Orders</a>
                     </li>
                     <!-- comment -->
                     <li class="nav-item">

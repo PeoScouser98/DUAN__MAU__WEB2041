@@ -48,9 +48,9 @@ $error = [];
 <?php
 if (isset($_POST['change-password'])) :
     if (empty($error)) {
-        $currentPassword = substr(md5($_POST['current_password'], false), 0, 20);
-        if ($currentPassword == $userData['user_password']) {
-            $newPassword = md5($_POST['new_password']);
+        $currentPassword = $_POST['current_password'];
+        if (password_verify($currentPassword, $userData['user_password'])) {
+            $newPassword = password_hash($_POST['new_password'], PASSWORD_DEFAULT);
             execute_query("UPDATE users SET user_password = '{$newPassword}' WHERE user_id = '{$userData['user_id']}'");
             echo "<script>alert(`Change password successfully!`);</script>";
         } else {

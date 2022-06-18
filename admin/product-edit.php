@@ -11,7 +11,7 @@ if (isset($_GET['id'])) {
 ?>
 <div class="bg-white d-flex flex-column justify-content-center align-items-center gap-5 py-5" style="max-width:1200px; margin: 0 auto">
     <h1 class="text-center text-secondary">Edit Product</h1>
-    <form action="" method="post" enctype="multipart/form-data" style="width: 40em">
+    <form action="" method="POST" enctype="multipart/form-data" style="width: 40em">
         <div class="mb-3">
             <label for="cate" class="form-label">Product's category</label>
             <select class="form-control" name="cate" id="cate">

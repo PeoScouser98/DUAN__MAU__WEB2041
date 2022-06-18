@@ -34,7 +34,7 @@
     }
 </style>
 <div class="container row px-0">
-    <aside class="col-3 bg-dark d-flex justify-content-start flex-column gap-5 position-sticky top-0" style="padding: 50px; height:80vh">
+    <aside class="col-3 bg-dark d-flex justify-content-start flex-column gap-5 position-sticky top-0" style="padding: 50px;">
         <!-- avatar -->
         <div>
             <form action="" method="POST" enctype="multipart/form-data" class="mb-5" onsubmit="loadImage(this)">
@@ -74,7 +74,9 @@
                     require './account-detail/view-profile.php';
                     break;
             }
-        }
+        } else
+            require './account-detail/view-profile.php';
+
         ?>
     </div>
 </div>

@@ -7,10 +7,10 @@ $error = [];
     <form action="" method="post" id="form">
         <div class="mb-3">
             <label for="" class="form-label">Current Password</label>
-            <input type="password" class="form-control w-100 " name="password" aria-describedby="helpId" id="password" value=<?= $userData['user_password'] ?>>
+            <input type="password" class="form-control w-100 " name="password" aria-describedby="helpId" id="password">
             <small class="error-message text-danger fw-bold" class="form-text text-muted">
                 <?php
-                check_empty('password', 'password');
+                check_empty('password', 'current password');
                 ?>
             </small>
         </div>
@@ -32,7 +32,7 @@ $error = [];
             <small class="error-message text-danger fw-bold" class="form-text text-muted">
                 <?php
                 check_empty('cfm_password', 'confirm password');
-                check_matching('password', 'cfm_password', 'confirm password')
+                check_matching('new_password', 'cfm_password', 'confirm password')
                 ?>
             </small>
         </div>
@@ -47,10 +47,16 @@ $error = [];
 
 <?php
 if (isset($_POST['change-password'])) :
-    if (empty($error)) :
-        execute_query("UPDATE users SET user_password = '{$_POST['new_password']}' WHERE user_id = '{$userData['user_id']}'");
-        echo "<script>alert(`Change password successfully!`);</script>";
-        echo "<script>window.location.reload()</script>";
-
-    endif;
+    if (empty($error)) {
+        $current_password = $_POST['password'];
+        if (password_verify($current_password, $userData['user_password'])) {
+            $new_password = password_hash($_POST['new_password'], PASSWORD_DEFAULT);
+            execute_query("UPDATE users SET user_password = '{$new_password}' WHERE user_id = '{$userData['user_id']}'");
+            echo "<script>alert(`Change password successfully!`);</script>";
+            echo "<script>window.location = window.location.href</script>";
+        } else {
+            echo "<script>alert(`Current password is incorrect!`);</script>";
+        }
+    } else
+        echo "<script>alert(`Failed to change password!`);</script>";
 endif;
