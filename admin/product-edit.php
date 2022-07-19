@@ -3,11 +3,9 @@ $error = [];
 $sql = "SELECT * FROM category";
 $categories = select_all_records($sql);
 if (isset($_GET['id'])) {
-    $product = select_single_record("SELECT * FROM product INNER JOIN category ON product.cate_id= category.cate_id WHERE product_id = '{$_GET['id']}'");
+    $product = select_single_record("SELECT * FROM product  WHERE product_id = '{$_GET['id']}'");
     extract($product);
 }
-
-
 ?>
 <div class="bg-white d-flex flex-column justify-content-center align-items-center gap-5 py-5" style="max-width:1200px; margin: 0 auto">
     <h1 class="text-center text-secondary">Edit Product</h1>
@@ -16,20 +14,14 @@ if (isset($_GET['id'])) {
             <label for="cate" class="form-label">Product's category</label>
             <select class="form-control" name="cate" id="cate">
                 <option value="">-- Select --</option>
-                <?php
-                foreach ($categories as $cate) {
-                ?>
+                <?php foreach ($categories as $cate) : ?>
                     <option value=<?= $cate['cate_id'] ?> <?php if ($cate_id == $cate['cate_id']) echo 'selected' ?>>
                         <?= $cate['cate_name'] ?>
                     </option>
-                <?php
-                }
-                ?>
+                <?php endforeach; ?>
             </select>
             <small id="helpId" class="form-text text-danger fw-bold">
-                <?php
-                check_empty("cate", "prdouct's category");
-                ?>
+                <?php check_empty("cate", "prdouct's category"); ?>
             </small>
         </div>
         <!-- product's name -->
@@ -37,9 +29,7 @@ if (isset($_GET['id'])) {
             <label for="product-name" class="form-label">Product's name</label>
             <input type="text" class="form-control" name="product_name" id="product-name" aria-describedby="helpId" value="<?php echo $product_name ?>">
             <small id="helpId" class="form-text text-danger fw-bold">
-                <?php
-                check_empty("product_name", "product's name");
-                ?>
+                <?php check_empty("product_name", "product's name"); ?>
             </small>
         </div>
         <!-- price -->
@@ -47,9 +37,7 @@ if (isset($_GET['id'])) {
             <label for="price" class="form-label">Product's price</label>
             <input type="number" min=0 class="form-control" name="price" id="price" aria-describedby="helpId" value=<?= $price ?>>
             <small id="helpId" class="form-text text-danger fw-bold">
-                <?php
-                check_empty("price", "price");
-                ?>
+                <?php check_empty("price", "price"); ?>
             </small>
         </div>
         <!-- image -->
@@ -57,9 +45,7 @@ if (isset($_GET['id'])) {
             <label for="image" class="form-label">Product's Image</label>
             <input type="file" class="form-control" name="product_img" id="image" value=<?= $product_img ?> aria-describedby="fileHelpId">
             <small id="fileHelpId" class="form-text fw-bold text-danger">
-                <?php
-                check_image('product_img', 'submit');
-                ?>
+                <?php check_image('product_img', 'submit'); ?>
             </small>
         </div>
         <!-- discount -->
@@ -72,9 +58,7 @@ if (isset($_GET['id'])) {
             <label for="description" class="form-label">Description</label>
             <textarea name="description" id="description" class="form-control d-block w-100" value="<?php echo $product_description ?>"></textarea>
             <small id="helpId" class="form-text text-danger fw-bold">
-                <?php
-                check_empty("description", "description");
-                ?>
+                <?php check_empty("description", "description"); ?>
             </small>
         </div>
         <!-- submit -->

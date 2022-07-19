@@ -5,7 +5,7 @@ function get_highestTurnover_byMonth($month)
     $sql = "SELECT product_name, price, SUM(quantity) as sold, SUM(amount) as turnover,MONTH(placed_on), YEAR(NOW()) as year FROM product
     INNER JOIN order_detail  ON  product.product_id=  order_detail.product_id
     INNER JOIN orders  ON  orders.order_id =  order_detail.order_id
-    WHERE MONTH(placed_on) = $month AND YEAR(placed_on) = YEAR(NOW()) AND orders.status_id = 2
+    WHERE MONTH(placed_on) = $month AND YEAR(placed_on) = YEAR(NOW()) 
     GROUP BY order_detail.product_id
     ORDER BY order_detail.amount DESC";
     return select_all_records($sql);

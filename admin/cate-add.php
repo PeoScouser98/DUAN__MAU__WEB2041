@@ -48,7 +48,7 @@ if (isset($_POST['submit'])) :
             $sql = "INSERT INTO category (cate_name,cate_icon) VALUES ('{$cateName}','{$cateIcon}')";
             execute_query($sql);
             echo "<script>alert(`Add a new category successfully!`)</script>";
-            echo "<script>window.location.reload()</script>";
+            echo "<script>window.location = '?page=cate-list'</script>";
         }
     } else
         echo "<script>alert(`Failed!`)</script>";

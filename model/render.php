@@ -67,7 +67,6 @@ function render_product_slider($sql)
 function render_product_cards($data, $imgdir, $pagination)
 {
 ?>
-
     <div class="container row gap-xxl-4 gap-lg-3 my-5 mx-auto" style="max-width:100%;">
         <?php
         foreach ($data as $item) : extract($item);

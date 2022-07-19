@@ -1,11 +1,11 @@
 <?php
-include './lib/global.php';
-include './lib/execute_query.php';
-include './lib/validate.php';
-include './lib/add-wish-list.php';
-include './lib/add-cart-list.php';
-include './lib/render.php';
-include './lib/send-mail.php';
+include './model/global.php';
+include './model/execute_query.php';
+include './model/validate.php';
+include './model/add-wish-list.php';
+include './model/add-cart-list.php';
+include './model/render.php';
+include './model/send-mail.php';
 
 if (isset($_COOKIE['id'])) {
     $id = $_COOKIE['id'];

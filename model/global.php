@@ -29,6 +29,7 @@ function upload_file($directory, $inputFileName)
         return $file_name;
     }
 }
+// upload file = ftp
 function ftp_upload_file($inputName, $remote_dir)
 {
     if (isset($_FILES[$inputName])); {
@@ -51,7 +52,7 @@ function ftp_upload_file($inputName, $remote_dir)
                 echo "<script>alert(`Cannot upload!`)</script>";
                 return false;
             }
-            ftp_close($ftp_conn);
+            ftp_close($ftp_conn); // close connection
         }
     }
 }

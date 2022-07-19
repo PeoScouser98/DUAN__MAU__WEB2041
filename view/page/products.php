@@ -43,8 +43,7 @@ if (isset($_GET['groupby'])) :
     endif;
 endif;
 // lấy ra tất cả sản phẩm
-if (!isset($_GET['groupby']) && !isset($_POST['search_product'])) :
-    unset($_SESSION['keyword']);
+if (!isset($_GET['groupby']) && !isset($_GET['keyword'])) :
     $itemLabel = "All Products";
     $pagination = paginate_page("SELECT COUNT(product_id) FROM product", 9);
     $products = select_all_records("SELECT * FROM product ORDER BY price {$sort} LIMIT {$pagination['startIndex']}, {$pagination['qty']}");

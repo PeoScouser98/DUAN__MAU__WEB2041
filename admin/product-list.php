@@ -12,7 +12,6 @@ if (isset($_GET['groupby'])) {
     $pagination = paginate_page("SELECT COUNT(product_id) FROM product ", $QTY_EACH_PAGE);
     extract($pagination);
     $productList = select_all_records("SELECT * FROM product 
-                                        INNER JOIN category ON product.cate_id = category.cate_id 
                                         LIMIT {$startIndex}, {$qty}");
 }
 ?>
@@ -57,7 +56,6 @@ if (isset($_GET['groupby'])) {
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Category</th>
                 <th>Product's name</th>
                 <th>In Stock</th>
                 <th>Price</th>
@@ -69,12 +67,11 @@ if (isset($_GET['groupby'])) {
         </thead>
         <tbody>
             <?php
-            if (!empty($productList)) {
+            if (!is_null($productList)) {
                 foreach ($productList as $product) :
             ?>
                     <tr>
                         <td><?= $product['product_id'] ?></td>
-                        <td><?= $product['cate_name'] ?></td>
                         <td><?= $product['product_name'] ?></td>
                         <td><?= $product['stock'] ?></td>
                         <td><?= $product['price'] ?></td>
@@ -92,7 +89,6 @@ if (isset($_GET['groupby'])) {
                 endforeach;
             } else
                 echo "<tr><td colspan='9' class='text-center text-danger fw-bold py-5'>There is no products</td></tr>";
-
             ?>
         </tbody>
     </table>
