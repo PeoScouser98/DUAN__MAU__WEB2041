@@ -1,7 +1,7 @@
 <?php
-include '../lib/execute_query.php';
-include '../lib/global.php';
-include '../lib/validate.php';
+include '../model/execute_query.php';
+include '../model/global.php';
+include '../model/validate.php';
 session_start();
 unset($_SESSION['cart']);
 if (isset($_COOKIE['id'])) {
@@ -17,8 +17,8 @@ if (isset($_COOKIE['id'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../styles/css/main.css" />
+    <link rel="stylesheet" href="../view/node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../view/styles/css/main.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/d2bf59f6fb.js" crossorigin="anonymous"></script>

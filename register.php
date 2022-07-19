@@ -1,6 +1,6 @@
 <?php
-include './lib/validate.php';
-include './lib/execute_query.php';
+include './model/validate.php';
+include './model/execute_query.php';
 $error = [];
 
 ?>
@@ -13,20 +13,19 @@ $error = [];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="./styles/css/login.css">
-    <link rel="stylesheet" href="./styles/css/main.css" />
-    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./view/node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./view/styles/css/login.css">
+    <link rel="stylesheet" href="./view/styles/css/main.css" />
+    <script src="./view/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/d2bf59f6fb.js" crossorigin="anonymous"></script>
     <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
 </head>
 
 <body>
-    <div class="login-form-container d-flex justify-content-center align-items-center position-fixed top-0 w-100 h-100" style="background-image:linear-gradient(black, white)">
-        <form action="./register.php" method="POST" enctype="multipart/form-data" id="login-form" class="d-flex justify-content-center flex-column align-items-center p-5">
+    <div class="d-flex justify-content-center align-items-center py-5" style="background-image:linear-gradient(black, white);">
+        <form action="./register.php" method="POST" enctype="multipart/form-data" id="form" class="d-flex justify-content-center flex-column align-items-center p-5" style="height:auto">
             <!-- title -->
-            <h1 class="fw-light text-white" style="font-size: 4em">Register</h1>
-            <p class="text-white">Sign up for free to shopping</p>
+            <h1 class="fw-light text-white mb-5" style="font-size: 4em">Register</h1>
             <div class="d-flex justify-content-center flex-column align-items-center gap-2 w-100">
                 <!-- account -->
                 <div class="mb-3 w-100 w-100 h-auto">
@@ -98,7 +97,7 @@ $error = [];
                 </div>
                 <!-- submit form -->
                 <div class="mb-3 w-100 w-100 h-auto d-flex justify-content-center">
-                    <input type="submit" class="form-control btn rounded" name="signup-submit" id="submit-btn" value="Sign Up" />
+                    <input type="submit" class="btn text-white rounded" name="signup-submit" id="submit-btn" value="Sign Up" />
                 </div>
             </div>
             <div class="mt-3">

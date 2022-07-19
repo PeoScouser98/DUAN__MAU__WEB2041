@@ -1,7 +1,7 @@
 <?php
-require './lib/validate.php';
-require './lib/execute_query.php';
-include './lib/send-mail.php';
+require './library/validate.php';
+require './library/execute_query.php';
+include './site/controllers/send-mail.php';
 // send new password to user by email
 if (isset($_POST['get-recovery-password'])) :
     $account = $_POST['account'];
@@ -14,7 +14,7 @@ if (isset($_POST['get-recovery-password'])) :
                 $verifyCode = substr(md5(rand(0, 999999)), 0, 8);
                 execute_query("UPDATE users SET user_password = '{$verifyCode}' WHERE user_id = '{$account}'");
                 send_verify_code($email, $verifyCode);
-                echo "<script>window.location = './get-new-password.php'</script>";
+                header('Location: ./reset-password.php');
             } else  echo "<script>alert(`Email is incorrect!`)</script>";
         }
         // tài khoản phải tồn tại trên hệ thống
@@ -36,10 +36,10 @@ endif;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="./styles/css/login.css">
-    <link rel="stylesheet" href="./styles/css/main.css" />
-    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./site/view/node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./site/view/styles/css/login.css">
+    <link rel="stylesheet" href="./site/view/styles/css/main.css" />
+    <script src="./view/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/d2bf59f6fb.js" crossorigin="anonymous"></script>
     <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
 </head>
@@ -47,7 +47,7 @@ endif;
 
 <body>
     <div class=" d-flex justify-content-center align-items-center position-fixed top-0 w-100 h-100" style="background-image:linear-gradient(black, white)">
-        <form action="" method="POST" id="login-form" class="d-flex justify-content-center flex-column align-items-center p-5">
+        <form action="" method="POST" id="form" class="d-flex justify-content-center flex-column align-items-center p-5">
             <!-- title -->
             <h1 class="fw-light text-white text-center mb-5" style="font-size: 2.5em">Password Recovery</h1>
             <div class="d-flex justify-content-center flex-column align-items-center gap-2 w-100">
@@ -61,7 +61,7 @@ endif;
                 </div>
 
                 <div class="mb-3 w-100 w-100 h-auto d-flex justify-content-center">
-                    <input type="submit" class="form-control btn rounded" name="get-recovery-password" id="submit-btn" value="Get New Password" />
+                    <input type="submit" class="btn text-white rounded" name="get-recovery-password" id="submit-btn" value="Get Verification Code" />
                 </div>
             </div>
             <div class="mt-3">
